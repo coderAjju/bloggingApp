@@ -2,6 +2,8 @@ import express from "express";
 import connectDB from "./config/db.js";
 import dotenv from "dotenv";
 import authRoutes from "./routes/auth.routes.js";
+import userRoutes from "./routes/user.routes.js";
+import postRoutes from './routes/post.routes.js'
 import cors from 'cors';
 import cookieParser from "cookie-parser";
 dotenv.config();
@@ -15,10 +17,12 @@ app.use(cors({
 app.use(cookieParser())
 app.use(express.json());
 app.use("/api/auth", authRoutes);
+app.use("/api/user",userRoutes);
+app.use("/api/post",postRoutes);
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || err.code || 500;
-  const message = err.message || "Internal server error";
+  const message = "Internal server error";
   res.status(statusCode).json({ success: false, statusCode, message });
 });
 
