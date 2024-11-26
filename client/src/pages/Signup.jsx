@@ -77,7 +77,7 @@ const Signup = () => {
             }
           </div>
           <Button color="purple" outline type="submit" >Sign Up</Button>
-          <OAuth />
+          {/* <OAuth />  this component is disabled because the google authentication is not working properly*/}
           </form>
           <div className="flex gap-2 text-sm mt-5">
             <span>Already have an account? {" "}
